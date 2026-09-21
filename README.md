@@ -86,7 +86,7 @@ The project aims to remain at zero monetary cost by prioritizing open-source too
 
 Current stage:
 
-v0.1 - LLM API Basics
+v0.2 - Embeddings and Semantic Similarity
 
 ## License
 
