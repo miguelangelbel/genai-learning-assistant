@@ -86,7 +86,7 @@ The project aims to remain at zero monetary cost by prioritizing open-source too
 
 Current stage:
 
- v0.3 - Manual RAG  
+ v0.4 - RAG with LangChain  
 
 ## License
 
