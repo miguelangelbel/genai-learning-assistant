@@ -86,7 +86,7 @@ The project aims to remain at zero monetary cost by prioritizing open-source too
 
 Current stage:
 
- v0.5 - Conversational Assistant 
+ v0.6	- FastAPI Backend
 
 ## License
 
