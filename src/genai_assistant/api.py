@@ -1,7 +1,6 @@
 """FastAPI backend for the GenAI Learning Assistant.
 
-This module exposes endpoints for health checks, conversational chat,
-and session management.
+Provides chat, health-check, and conversation-session endpoints.
 """
 
 import logging
@@ -65,6 +64,9 @@ def root():
     response_model=ChatResponse
 )
 def chat(request: ChatRequest):
+    """
+    Generate a conversational RAG response for a session.
+    """
 
     history = histories.setdefault(
         request.session_id,
@@ -140,6 +142,9 @@ def chat(request: ChatRequest):
     response_model=SessionDeleteResponse
 )
 def delete_session(session_id: str):
+    """
+    Delete the in-memory history associated with a session.
+    """
 
     if session_id not in histories:
         raise HTTPException(
@@ -158,6 +163,9 @@ def delete_session(session_id: str):
     response_model=HealthResponse
 )
 def health():
+    """
+    Return the API health status.
+    """
     return HealthResponse(
         status="ok"
     )

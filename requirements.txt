@@ -6,4 +6,3 @@ langchain
 langchain-huggingface
 langchain-google-genai
 sentence-transformers
-dotenv

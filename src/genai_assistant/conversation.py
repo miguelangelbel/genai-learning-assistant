@@ -1,7 +1,9 @@
+"""Conversational RAG pipeline for the GenAI Learning Assistant."""
+
 import os
-from dotenv import load_dotenv
 from functools import lru_cache
 
+from dotenv import load_dotenv
 from langchain_core.documents import Document
 from langchain_core.messages import HumanMessage, AIMessage
 from langchain_core.output_parsers import StrOutputParser
@@ -13,6 +15,8 @@ from langchain_huggingface import HuggingFaceEmbeddings
 
 LLM_MODEL = "gemini-3.5-flash-lite"
 EMBEDDING_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
+
+load_dotenv()
 
 
 texts = [
@@ -70,6 +74,9 @@ answer_prompt = ChatPromptTemplate.from_messages([
 
 
 def format_docs(docs):
+    """
+    Combine retrieved documents into a single context string.
+    """
     return "\n\n".join(
         doc.page_content
         for doc in docs
@@ -78,8 +85,9 @@ def format_docs(docs):
 
 @lru_cache(maxsize=1)
 def get_rag_components():
-    load_dotenv()
-
+    """
+    Initialize and cache the RAG components on first use.
+    """
     api_key = os.getenv("GEMINI_API_KEY")
 
     if not api_key:
@@ -120,6 +128,9 @@ def get_rag_components():
 
 
 def conversational_rag(question, history):
+    """
+    Generate a grounded response and update conversation history.
+    """
     retriever, contextualize_chain, answer_chain = (
         get_rag_components()
     )

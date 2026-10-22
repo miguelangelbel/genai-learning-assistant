@@ -1,6 +1,8 @@
+import pytest
+
 from fastapi.testclient import TestClient
 
-from genai_assistant.api import app
+from genai_assistant.api import app, histories
 
 
 client = TestClient(app)
@@ -82,3 +84,9 @@ def test_delete_session(monkeypatch):
     )
 
     assert response.status_code == 404   
+
+@pytest.fixture(autouse=True)
+def clear_histories():
+    histories.clear()
+    yield
+    histories.clear()
