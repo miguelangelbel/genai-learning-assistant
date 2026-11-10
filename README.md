@@ -67,12 +67,15 @@ genai-learning-assistant/
 |-- src/
 |   `-- genai_assistant/
 |       |-- __init__.py
+|       |-- agent.py
 |       |-- api.py
 |       |-- api_client.py
 |       |-- conversation.py
-|       `-- frontend.py
+|       |-- frontend.py
+|       `-- tools.py
 |
 |-- tests/
+|   |-- test_agent.py
 |   |-- test_api.py
 |   `-- test_api_client.py
 |
